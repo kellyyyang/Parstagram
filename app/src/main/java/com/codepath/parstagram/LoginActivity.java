@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 goMainActivity();
+                Log.i(TAG, "Going to main activity.");
                 Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT);
             }
         });
