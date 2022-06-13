@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.2575" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.26721014492753625" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22882560876848246" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24507194187330164" />
         <entry key="app/src/main/res/layout/activity_spash_screen.xml" value="0.26721014492753625" />
       </map>
     </option>
