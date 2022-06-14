@@ -16,6 +16,7 @@ import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.List;
 
@@ -39,6 +40,40 @@ public class MainActivity extends AppCompatActivity {
         ivPhoto = findViewById(R.id.ivPhoto);
 
         queryPosts();
+
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String postDescription = etDescription.getText().toString();
+                if (postDescription.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Sorry, your description cannot be empty.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                savePost(postDescription, currentUser);
+            }
+        });
+    }
+
+    private void savePost(String postDescription, ParseUser currentUser) {
+        Post post = new Post();
+        post.setDescription(postDescription);
+        post.setUser(currentUser);
+
+        post.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with saving post");
+                    Toast.makeText(MainActivity.this, "Issue with saving post!", Toast.LENGTH_SHORT);
+                } else {
+                    Log.i(TAG, "Post has been saved");
+                    Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT);
+                    post.setDescription("");
+                }
+                return;
+            }
+        });
     }
 
     // get the Posts in Parse.
