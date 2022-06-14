@@ -76,10 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (e == null) {
                     goMainActivity();
                     Log.i(TAG, "Going to main activity.");
-                    Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT);
+                    Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.e(TAG, "Issue with sign up ", e);
-                    Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT);
+                    Toast.makeText(LoginActivity.this, "Issue with login!", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }

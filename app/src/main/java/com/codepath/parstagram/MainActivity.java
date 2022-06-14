@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e != null) {
                     Log.e(TAG, "Issue with saving post");
-                    Toast.makeText(MainActivity.this, "Issue with saving post!", Toast.LENGTH_SHORT);
+                    Toast.makeText(MainActivity.this, "Issue with saving post!", Toast.LENGTH_SHORT).show();
                 } else {
                     Log.i(TAG, "Post has been saved");
-                    Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT);
-                    post.setDescription("");
+                    Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                    etDescription.setText("");
                 }
                 return;
             }
