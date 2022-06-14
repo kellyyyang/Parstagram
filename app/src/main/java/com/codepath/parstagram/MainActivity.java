@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         queryPosts();
     }
 
+    // get the Posts in Parse.
     private void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
