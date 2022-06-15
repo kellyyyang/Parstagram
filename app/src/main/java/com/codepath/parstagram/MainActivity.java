@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btnPost = findViewById(R.id.btnPost);
         ivPhoto = findViewById(R.id.ivPhoto);
 
-        queryPosts();
+//        queryPosts();
 
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,21 +95,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // get the Posts in Parse.
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with getting posts ", e);
-                    return;
-                } for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getDescription() + ", user: " + post.getUser().getUsername());
-                }
-            }
-        });
-    }
+//    private void queryPosts() {
+//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+//        query.include(Post.KEY_USER);
+//        query.findInBackground(new FindCallback<Post>() {
+//            @Override
+//            public void done(List<Post> posts, ParseException e) {
+//                if (e != null) {
+//                    Log.e(TAG, "Issue with getting posts ", e);
+//                    return;
+//                } for (Post post : posts) {
+//                    Log.i(TAG, "Post: " + post.getDescription() + ", user: " + post.getUser().getUsername());
+//                }
+//            }
+//        });
+//    }
 
     public void onLogoutButton(View view) {
         ParseUser.logOutInBackground(new LogOutCallback() {
