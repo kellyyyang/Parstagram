@@ -81,4 +81,15 @@
         app:layout_constraintBottom_toTopOf="@+id/etDescription"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btnFeed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:text="Feed"
+        app:layout_constraintEnd_toStartOf="@+id/btnLogout"
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="onFeedButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

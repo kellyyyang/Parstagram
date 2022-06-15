@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.parse.FindCallback;
 import com.parse.LogOutCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -63,14 +65,16 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(postDescription, currentUser);
+                ParseFile image = new ParseFile(photoFile);
+                savePost(postDescription, currentUser, image);
             }
         });
     }
 
-    private void savePost(String postDescription, ParseUser currentUser) {
+    private void savePost(String postDescription, ParseUser currentUser, ParseFile image) {
         Post post = new Post();
         post.setDescription(postDescription);
+        post.setImage(image);
         post.setUser(currentUser);
 
         post.saveInBackground(new SaveCallback() {
@@ -122,6 +126,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void onFeedButton(View view) {
+        Intent i = new Intent(MainActivity.this, FeedActivity.class);
+        startActivity(i);
     }
 
     // Returns the File for a photo stored on disk given the fileName
