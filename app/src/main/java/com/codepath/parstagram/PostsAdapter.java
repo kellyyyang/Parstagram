@@ -1,6 +1,7 @@
 package com.codepath.parstagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.parse.ParseFile;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -55,7 +58,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         notifyDataSetChanged();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvUsername;
         private ImageView ivImage;
@@ -68,6 +71,9 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvUsernameBody = itemView.findViewById(R.id.tvUsernameBody);
+
+            // add this as the itemView's OnClickListener
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Post post) {
@@ -80,5 +86,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 Glide.with(context).load(image.getUrl()).into(ivImage);
             }
         }
+
+        @Override
+        public void onClick(View v) {
+            // get position
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. it actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                Post post = posts.get(position);
+                Intent intent = new Intent(context, PostDetails.class);
+                intent.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
+                context.startActivity(intent);
+            }
+        }
+
     }
 }
