@@ -16,6 +16,8 @@ import com.parse.ParseException;
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
+import java.util.Date;
+
 public class PostDetails extends AppCompatActivity {
 
     public static final String TAG = "PostDetails";
@@ -40,7 +42,7 @@ public class PostDetails extends AppCompatActivity {
         Log.d(TAG, "Showing details for " + post.getUser().getUsername() + post.getDescription());
         tvUsernameDetails.setText(post.getUser().getUsername());
         String username = post.getUser().getUsername();
-        tvDescriptionDetails.setText(String.format("%s%s", Html.fromHtml("<b>" + username + "</b> "), post.getDescription()));
+        tvDescriptionDetails.setText(String.format("%s%s", Html.fromHtml("<strong>" + username + "</strong> "), post.getDescription()));
         try {
             String filePath = post.getImage().getFile().getPath();
             Bitmap bitmap = BitmapFactory.decodeFile(filePath);
@@ -49,6 +51,10 @@ public class PostDetails extends AppCompatActivity {
             Log.e(TAG, "unable to parse image " + e);
 //            e.printStackTrace();
         }
+        Date createdAt = post.getCreatedAt();
+        String timeAgo = Post.calculateTimeAgo(createdAt);
+
+        tvTimeStamp.setText(timeAgo);
 
     }
 }
