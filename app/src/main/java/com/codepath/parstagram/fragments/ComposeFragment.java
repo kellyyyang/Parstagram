@@ -83,15 +83,6 @@ public class ComposeFragment extends Fragment {
         return fragment;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-
     // the onCreateView method is called when Fragment should create its View object hierarchy
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -120,6 +111,7 @@ public class ComposeFragment extends Fragment {
                     return;
                 } if (photoFile == null || ivPhoto.getDrawable() == null) {
                     Toast.makeText(getContext(), "There is no image!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 ParseFile image = new ParseFile(photoFile);
