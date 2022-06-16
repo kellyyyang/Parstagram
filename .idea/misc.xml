@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/bg_gradient.xml" value="0.2575" />
+        <entry key="app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2575" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.2575" />
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.1" />
@@ -13,7 +14,9 @@
         <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.35736608090608024" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.24507194187330164" />
         <entry key="app/src/main/res/layout/activity_spash_screen.xml" value="0.26721014492753625" />
+        <entry key="app/src/main/res/layout/fragment_compose.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/item_post.xml" value="0.39488096375396287" />
+        <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.35371704101562507" />
         <entry key="app/src/main/res/xml/fileprovider.xml" value="0.19579533941236069" />
         <entry key="app/src/main/res/xml/item_post.xml" value="0.2936614990234375" />
       </map>
