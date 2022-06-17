@@ -20,6 +20,8 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/item_post.xml" value="0.39488096375396287" />
         <entry key="app/src/main/res/menu/menu_bottom_navigation.xml" value="0.35371704101562507" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="app/src/main/res/xml/fileprovider.xml" value="0.19579533941236069" />
         <entry key="app/src/main/res/xml/item_post.xml" value="0.2936614990234375" />
       </map>
