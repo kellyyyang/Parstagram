@@ -2,6 +2,11 @@ package com.codepath.parstagram;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,14 +68,12 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
-        private TextView tvUsernameBody;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
-            tvUsernameBody = itemView.findViewById(R.id.tvUsernameBody);
 
             // add this as the itemView's OnClickListener
             itemView.setOnClickListener(this);
@@ -78,9 +81,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         public void bind(Post post) {
             // Bind the post data to the view elements
-            tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
-            tvUsernameBody.setText(post.getUser().getUsername());
+            String username = post.getUser().getUsername();
+            String description = " " + username + " " + post.getDescription();
+            SpannableString spannableString = new SpannableString(description);
+            StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
+            Integer length = post.getUser().getUsername().length() - 1;
+            spannableString.setSpan(boldSpan, 0, length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tvDescription.setText(description);
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
