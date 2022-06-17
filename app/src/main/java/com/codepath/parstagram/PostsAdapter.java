@@ -3,6 +3,7 @@ package com.codepath.parstagram;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -65,15 +66,19 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        public static final String KEY_PROFILEPIC = "profilePic";
+
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
+        private ImageView ivProfilePic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
 
             // add this as the itemView's OnClickListener
             itemView.setOnClickListener(this);
@@ -92,6 +97,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
+            }
+            ParseFile profilePic = post.getUser().getParseFile(KEY_PROFILEPIC);
+            if (profilePic != null) {
+                Glide.with(context).load(profilePic.getUrl()).into(ivProfilePic);
             }
         }
 

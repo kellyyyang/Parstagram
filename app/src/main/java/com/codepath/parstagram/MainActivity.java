@@ -6,6 +6,7 @@ import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.UriMatcher;
 import android.graphics.Bitmap;
@@ -44,14 +45,29 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
+    private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
     private BottomNavigationView bottomNavigationView;
+
+    private EditText etDescription;
+    private Button btnPicture;
+    private Button btnPost;
+    private ImageView ivPhoto;
+
+    public String photoFileName = "photo.jpg";
+    File photoFile;
+    public final String APP_TAG = "Parsetagram";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        etDescription = findViewById(R.id.etDescription);
+        btnPicture = findViewById(R.id.btnPicture);
+        btnPost = findViewById(R.id.btnPost);
+        ivPhoto = findViewById(R.id.ivPhoto);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -85,50 +101,15 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
+    public void onFeedButton(View view) {
+        Intent i = new Intent(MainActivity.this, FeedActivity.class);
+        startActivity(i);
+    }
 
-    // get the Posts in Parse.
-//    private void queryPosts() {
-//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-//        query.include(Post.KEY_USER);
-//        query.findInBackground(new FindCallback<Post>() {
-//            @Override
-//            public void done(List<Post> posts, ParseException e) {
-//                if (e != null) {
-//                    Log.e(TAG, "Issue with getting posts ", e);
-//                    return;
-//                } for (Post post : posts) {
-//                    Log.i(TAG, "Post: " + post.getDescription() + ", user: " + post.getUser().getUsername());
-//                }
-//            }
-//        });
-//    }
 
-//    public void onLogoutButton(View view) {
-//        ParseUser.logOutInBackground(new LogOutCallback() {
-//            @Override
-//            public void done(ParseException e) {
-//                if (e != null) {
-//                    Log.e(TAG, "Issue with login ", e);
-//                    Toast.makeText(MainActivity.this, "Issue with logout!", Toast.LENGTH_SHORT);
-//                    return;
-//                } else {
-//                    goLoginActivity();
-//                    Log.i(TAG, "Going to login activity.");
-//                    Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT);
-//                }
-//            }
-//        });
-//    }
-//
-//    public void onFeedButton(View view) {
-//        Intent i = new Intent(MainActivity.this, FeedActivity.class);
-//        startActivity(i);
-//    }
-//
-//
-//    private void goLoginActivity() {
-//        Intent i = new Intent(this, LoginActivity.class);
-//        startActivity(i);
-//        finish();
-//    }
+    private void goLoginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
 }
