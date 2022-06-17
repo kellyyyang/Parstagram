@@ -30,6 +30,7 @@ import com.codepath.parstagram.fragments.ComposeFragment;
 import com.codepath.parstagram.fragments.PostsFragment;
 import com.codepath.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.elevation.SurfaceColors;
 import com.parse.FindCallback;
 import com.parse.LogOutCallback;
 import com.parse.Parse;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setBackgroundColor(SurfaceColors.SURFACE_2.getColor(this));
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -80,16 +82,16 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                         fragment = new PostsFragment();
                         break;
                     case R.id.action_compose:
-                        Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Compose!", Toast.LENGTH_SHORT).show();
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                     default:
-                        Toast.makeText(MainActivity.this, "Profile! ", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(MainActivity.this, "Profile! ", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
                         break;
                 }
@@ -101,15 +103,32 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
+    public void onLogoutButton(View view) {
+        ParseUser.logOutInBackground(new LogOutCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with login ", e);
+                    Toast.makeText(MainActivity.this, "Issue with logout!", Toast.LENGTH_SHORT);
+                    return;
+                } else {
+                    goLoginActivity();
+                    Log.i(TAG, "Going to login activity.");
+                    Toast.makeText(MainActivity.this, "Success!", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+    }
+
+    private void goLoginActivity() {
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+//        finish();
+    }
+
     public void onFeedButton(View view) {
         Intent i = new Intent(MainActivity.this, FeedActivity.class);
         startActivity(i);
     }
 
-
-    private void goLoginActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
-        startActivity(i);
-        finish();
-    }
 }

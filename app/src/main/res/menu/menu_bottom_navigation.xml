@@ -5,15 +5,18 @@
         android:id="@+id/action_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:iconTint="@color/ig_blue" />
     <item
         android:id="@+id/action_compose"
         android:icon="@drawable/ic_baseline_add_circle_outline_24"
         android:title="Compose"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:iconTint="@color/ig_blue" />
     <item
         android:id="@+id/action_profile"
         android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="Profile"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:iconTint="@color/ig_blue" />
 </menu>

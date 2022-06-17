@@ -88,7 +88,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             // Bind the post data to the view elements
             tvUsername.setText(post.getUser().getUsername());
             String username = post.getUser().getUsername();
-            String description = " " + username + " " + post.getDescription();
+            String description = username + " " + post.getDescription();
             SpannableString spannableString = new SpannableString(description);
             StyleSpan boldSpan = new StyleSpan(Typeface.BOLD);
             Integer length = post.getUser().getUsername().length() - 1;

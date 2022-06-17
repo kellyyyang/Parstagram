@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Username" />
@@ -40,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivImageDetails"
+        android:textColor="@color/black"
         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam posuere nibh ipsum. " />
 
     <TextView
@@ -50,6 +52,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescriptionDetails"
+        android:textSize="12sp"
         tools:text="Timestamp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

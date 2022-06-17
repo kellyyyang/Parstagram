@@ -177,26 +177,9 @@ public class ComposeFragment extends Fragment {
                     Log.i(TAG, "Post has been saved");
                     Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT).show();
                     etDescription.setText("");
-                    ivPhoto.setVisibility(View.GONE);
+                    ivPhoto.setVisibility(View.INVISIBLE);
                 }
                 return;
-            }
-        });
-    }
-
-    public void onLogoutButton(View view) {
-        ParseUser.logOutInBackground(new LogOutCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "Issue with login ", e);
-                    Toast.makeText(getContext(), "Issue with logout!", Toast.LENGTH_SHORT);
-                    return;
-                } else {
-                    goLoginActivity();
-                    Log.i(TAG, "Going to login activity.");
-                    Toast.makeText(getContext(), "Success!", Toast.LENGTH_SHORT);
-                }
             }
         });
     }
@@ -207,9 +190,9 @@ public class ComposeFragment extends Fragment {
     }
 
 
-    private void goLoginActivity() {
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-    }
+//    private void goLoginActivity() {
+//        Intent i = new Intent(getContext(), LoginActivity.class);
+//        startActivity(i);
+//    }
 
 }

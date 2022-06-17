@@ -1,5 +1,6 @@
 package com.codepath.parstagram.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,14 +15,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.codepath.parstagram.EndlessRecyclerViewScrollListener;
+import com.codepath.parstagram.LoginActivity;
 import com.codepath.parstagram.Post;
 import com.codepath.parstagram.PostsAdapter;
 import com.codepath.parstagram.R;
 import com.parse.FindCallback;
+import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +45,8 @@ public class PostsFragment extends Fragment {
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
     protected List<Post> allPosts;
+
+    private Button btnLogout;
 
     protected Integer displayLimit = 20;
 
@@ -73,6 +81,13 @@ public class PostsFragment extends Fragment {
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         // query posts from Parsetagram
         queryPosts();
+
+//        btnLogout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onLogoutButton(v);
+//            }
+//        });
 
         // start: endless scrolling
 
